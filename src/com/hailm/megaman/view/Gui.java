@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class Gui extends JFrame implements SetUp {
     
-    public static final int WIDTH_FRAME = 800;
+    public static final int WIDTH_FRAME = 1000;
     public static final int HEIGHT_FRAME = 500;
     private GamePanel gamePanel;
     public Gui() {
@@ -37,5 +37,4 @@ public class Gui extends JFrame implements SetUp {
         // TODO Auto-generated method stub
 
     }
-
 }
