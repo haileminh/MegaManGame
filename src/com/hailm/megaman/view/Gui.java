@@ -34,7 +34,6 @@ public class Gui extends JFrame implements SetUp {
 
     @Override
     public void registerListener() {
-        // TODO Auto-generated method stub
-
+//       this.addKeyListener(gamePanel);
     }
 }

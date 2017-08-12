@@ -1,11 +1,19 @@
 package com.hailm.megaman.view;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class GamePanel extends BasePanel implements Runnable {
+public class GamePanel extends BasePanel implements Runnable, KeyListener {
     private Thread thread;
 
     private boolean isRunning;
+
+    private InputManager inputManager;
+
+    public GamePanel() {
+        inputManager = new InputManager();
+    }
 
     @Override
     public void initComponents() {
@@ -20,8 +28,8 @@ public class GamePanel extends BasePanel implements Runnable {
 
     @Override
     public void registerListener() {
-        // TODO Auto-generated method stub
-
+        setFocusable(true);
+        addKeyListener(this);
     }
 
     public void startGame() {
@@ -42,8 +50,8 @@ public class GamePanel extends BasePanel implements Runnable {
         long period = 1000000000 / 80;
         int a = 1;
         while (isRunning) {
-            
-            System.out.println("a= " + (a++));
+
+            // System.out.println("a= " + (a++));
             currentTime = System.nanoTime();
             sleepTime = period - (currentTime - previousTime);
             try {
@@ -58,6 +66,22 @@ public class GamePanel extends BasePanel implements Runnable {
 
             previousTime = System.nanoTime();
         }
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        inputManager.processKeyPressed(e.getKeyCode());
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+       inputManager.processKeyReleased(e.getKeyCode());
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
 
     }
 
